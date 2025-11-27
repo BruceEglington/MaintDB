@@ -54,9 +54,6 @@ implementation
 uses
   ServerController, maint_dm, maint_equipment, DB;
 
-
-
-
 procedure TISFEquipDetails.IWAppFormRender(Sender: TObject);
 begin
   TopBar.lnkSignIn.Visible := not UserSession.LoggedIn;
@@ -64,6 +61,11 @@ begin
   begin
     TopBar.lblWelcome.Caption := 'Welcome ' + UserSession.UserDisplayName;
   end;
+  iwbEdit.Visible := (dmR.cdsEquipment.State in [dsBrowse]);
+  iwbReturn.Visible := (dmR.cdsEquipment.State in [dsBrowse]);
+  iwbApplyUpdates.Visible := (dmR.cdsEquipment.State in [dsEdit,dsInsert]);
+  iwbCancelChanges.Visible := (dmR.cdsEquipment.State in [dsEdit,dsInsert]);
+  iwbDelete.Visible := (dmR.cdsEquipment.State in [dsBrowse]);
 end;
 
 procedure TISFEquipDetails.IWAppFormCreate(Sender: TObject);

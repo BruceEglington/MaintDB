@@ -6,13 +6,13 @@ uses
   madListHardware,
   madListProcesses,
   madListModules,
+  IWRtlFix,
   IWStart,
   Forms,
   ServerController in 'ServerController.pas' {IWServerController: TIWServerController},
   maint_uMain in 'maint_uMain.pas',
   maint_frTopBar in 'maint_frTopBar.pas' {ISFTopBar: TFrame},
   maint_frProductTree in 'maint_frProductTree.pas' {ISFProductTree: TFrame},
-  maint_dm in 'maint_dm.pas' {dmR: TDataModule},
   maint_frGrid in 'maint_frGrid.pas' {ISFGrid: TIWAppForm},
   usr_constants in '..\WebUserIW\usr_constants.pas',
   maint_definequery in 'maint_definequery.pas' {ISFDefineQuery: TIWAppForm},
@@ -34,10 +34,12 @@ uses
   ErrCodes in '..\Eglington Delphi common code items\ErrCodes.pas',
   Mathproc in '..\Eglington Delphi common code items\Mathproc.pas',
   NumRecipes in '..\Eglington Delphi common code items\NumRecipes.pas',
-  NumRecipes_varb in '..\Eglington Delphi common code items\NumRecipes_varb.pas';
+  NumRecipes_varb in '..\Eglington Delphi common code items\NumRecipes_varb.pas',
+  maint_dm in 'maint_dm.pas' {dmR: TDataModule};
 
 {$R *.res}
 
 begin
   TIWStart.Execute(true);
 end.
+

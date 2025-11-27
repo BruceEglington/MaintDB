@@ -49,12 +49,17 @@ object ISFMain: TISFMain
       DesignSize = (
         855
         69)
+      inherited rectBlackTop: TIWRectangle
+        Font.Color = clWebBLACK
+      end
       inherited rectRedTop: TIWRectangle
         Width = 722
+        Font.Color = clWebBLACK
         ExplicitWidth = 722
       end
       inherited IWRectangleTitle: TIWRectangle
         Width = 855
+        Font.Color = clWebDIMGRAY
         ExplicitLeft = 0
         ExplicitTop = 0
         ExplicitWidth = 552
@@ -64,17 +69,24 @@ object ISFMain: TISFMain
         Width = 3
         Height = 15
         Font.Size = 9
-        NoWrap = True
+        Font.PxSize = 12
+        Font.Color = clWebDARKSLATEGRAY
         ExplicitLeft = 152
         ExplicitWidth = 3
         ExplicitHeight = 15
       end
       inherited iwlSignOut: TIWLink
         Font.Size = 9
+        Font.Style = [fsUnderline]
+        Font.PxSize = 12
+        Font.Color = clWebBLUE
       end
       inherited lnkSignIn: TIWLink
         Left = 540
         Font.Size = 9
+        Font.Style = [fsUnderline]
+        Font.PxSize = 12
+        Font.Color = clWebBLUE
         OnClick = TopBarlnkSignInClick
         ExplicitLeft = 540
       end
@@ -86,14 +98,11 @@ object ISFMain: TISFMain
     Width = 713
     Height = 452
     RenderInvisibleControls = False
-    TabOrder = 0
     Align = alClient
-    BorderOptions.NumericWidth = 1
-    BorderOptions.BorderWidth = cbwNumeric
     BorderOptions.Style = cbsNone
-    BorderOptions.Color = clNone
     ZIndex = -1
     object IWDBMemo1: TIWDBMemo
+      AlignWithMargins = False
       Left = 6
       Top = 59
       Width = 679
@@ -101,15 +110,13 @@ object ISFMain: TISFMain
       StyleRenderOptions.RenderBorder = False
       BGColor = clWebWHITE
       Editable = False
-      Font.Color = clNone
       Font.FontName = 'Arial'
       Font.Size = 9
-      Font.Style = []
+      Font.PxSize = 12
       InvisibleBorder = True
       HorizScrollBar = False
       VertScrollBar = True
       Required = False
-      TabOrder = 0
       SubmitOnAsyncEvent = True
       AutoEditable = False
       DataField = 'PROGRESSDETAILS'
@@ -122,23 +129,22 @@ object ISFMain: TISFMain
       Width = 713
       Height = 60
       RenderInvisibleControls = False
-      TabOrder = 0
       Align = alTop
       BorderOptions.NumericWidth = 0
-      BorderOptions.BorderWidth = cbwNumeric
       BorderOptions.Style = cbsNone
-      BorderOptions.Color = clNone
       ZIndex = -1
       object lblWelcome: TIWLabel
+        AlignWithMargins = False
         Left = 12
         Top = 26
         Width = 210
         Height = 22
         ZIndex = 1
-        Font.Color = clWebDARKSLATEGRAY
         Font.FontName = 'Arial'
         Font.Size = 14
         Font.Style = [fsBold]
+        Font.PxSize = 18
+        Font.Color = clWebDARKSLATEGRAY
         NoWrap = True
         HasTabOrder = False
         FriendlyName = 'lblWelcome'
@@ -151,36 +157,32 @@ object ISFMain: TISFMain
       Width = 713
       Height = 105
       RenderInvisibleControls = False
-      TabOrder = 0
       Align = alBottom
-      BorderOptions.NumericWidth = 1
-      BorderOptions.BorderWidth = cbwNumeric
       BorderOptions.Style = cbsNone
-      BorderOptions.Color = clNone
       ZIndex = -1
       object IWLabel3: TIWLabel
+        AlignWithMargins = False
         Left = 8
         Top = 36
         Width = 141
         Height = 14
-        Font.Color = clNone
         Font.FontName = 'Arial'
         Font.Size = 8
-        Font.Style = []
+        Font.PxSize = 10
         NoWrap = True
         HasTabOrder = False
         FriendlyName = 'IWLabel3'
         Caption = 'bruce.eglington@usask.ca'
       end
       object IWDBLabel1: TIWDBLabel
+        AlignWithMargins = False
         Left = 8
         Top = 20
         Width = 108
         Height = 15
-        Font.Color = clNone
         Font.FontName = 'Arial'
         Font.Size = 9
-        Font.Style = []
+        Font.PxSize = 12
         NoWrap = True
         HasTabOrder = False
         DataField = 'PROGRESSDATE'
@@ -188,60 +190,54 @@ object ISFMain: TISFMain
         FriendlyName = 'IWDBLabel1'
       end
       object IWLabel1: TIWLabel
+        AlignWithMargins = False
         Left = 8
         Top = 4
         Width = 113
         Height = 15
-        Font.Color = clNone
         Font.FontName = 'Arial'
         Font.Size = 9
-        Font.Style = []
+        Font.PxSize = 12
         NoWrap = True
         HasTabOrder = False
         FriendlyName = 'IWLabel1'
         Caption = 'Dr Bruce Eglington'
       end
       object iwlNumUses: TIWLabel
+        AlignWithMargins = False
         Left = 542
         Top = 51
         Width = 141
         Height = 14
         Alignment = taRightJustify
-        Font.Color = clNone
         Font.FontName = 'Arial'
         Font.Size = 8
-        Font.Style = []
+        Font.PxSize = 10
         NoWrap = True
         HasTabOrder = False
         FriendlyName = 'iwlNumUses'
         Caption = 'This program has been used '
       end
       object iwbPermissions: TIWButton
+        AlignWithMargins = False
         Left = 376
         Top = 36
         Width = 120
         Height = 30
-        Visible = False
         Caption = 'iwbPermissions'
         Color = clBtnFace
-        Font.Color = clNone
-        Font.Size = 10
-        Font.Style = []
         FriendlyName = 'iwbPermissions'
         TabOrder = 3
         OnClick = iwbPermissionsClick
       end
       object iwbCheckIniFile: TIWButton
+        AlignWithMargins = False
         Left = 376
         Top = 72
         Width = 120
         Height = 30
-        Visible = False
         Caption = 'iwbCheckIniFile'
         Color = clBtnFace
-        Font.Color = clNone
-        Font.Size = 10
-        Font.Style = []
         FriendlyName = 'iwbCheckIniFile'
         TabOrder = 4
         OnClick = iwbCheckIniFileClick
@@ -271,6 +267,7 @@ object ISFMain: TISFMain
         Left = 134
         Top = 0
         Height = 452
+        Font.Color = clWebBLACK
         ExplicitLeft = 134
         ExplicitTop = 0
         ExplicitHeight = 450
@@ -280,6 +277,7 @@ object ISFMain: TISFMain
         ExplicitHeight = 318
         inherited iwlDefineQuery: TIWLink
           OnClick = LeftTreeiwlDefineQueryClick
+          TabOrder = -1
         end
       end
     end

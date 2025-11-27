@@ -1,0 +1,32 @@
+------------------------------------------------------------------------------------------------------------------------
+Exception message  : Access violation at address 00E4DE5B in module 'MaintDB.exe' (offset 6DDE5B). Read of address 00000068
+Depending on the error condition, it might be possible to restart the application.
+Exception class    : EAccessViolation
+Exception address  : 00E4DE5B
+Exception Time     : 2025-04-30 07:25:59.195
+------------------------------------------------------------------------------------------------------------------------
+Application Name   : MaintDB.exe
+Application Version: 2.0.0.0
+Started at         : 2025-04-30 07:25:56.340
+Running for        :  2 seconds
+Computer Name      : EGLINGTON
+Compiler Version   : 360
+------------------------------------------------------------------------------------------------------------------------
+IntraWeb Version   : 16.0.9
+Multi-session      : False
+Content Path       : C:\DevD12\Maintenance\wwwroot\
+Session count      : 1
+Current Thread ID  : 12904
+Application Path   : C:\DevD12\Maintenance\Win32\Release\
+Active Form        : [unassigned]
+Active Form list   :
+Form list          : [1] dmUser (TdmUser)
+Browser Name       : Firefox
+Browser UserAgent  : Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:138.0) Gecko/20100101 Firefox/138.0
+Session ID         : kbySbXiEDMeUHpXgUpNa~lHyyRS
+Last Access        : 2025-04-30 07:25:59.193
+Callback           : False
+Runtime parameters : 
+------------------------------------------------------------------------------------------------------------------------
+[Stack trace is empty]
+------------------------------------------------------------------------------------------------------------------------

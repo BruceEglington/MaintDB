@@ -25,25 +25,21 @@ object ISFTopBar: TISFTopBar
     HorzScrollBar.Visible = False
     VertScrollBar.Visible = False
     RenderInvisibleControls = False
-    TabOrder = 0
     Align = alClient
-    BorderOptions.NumericWidth = 1
-    BorderOptions.BorderWidth = cbwNumeric
     BorderOptions.Style = cbsNone
-    BorderOptions.Color = clNone
     ZIndex = -1
     DesignSize = (
       792
       69)
     object rectBlackTop: TIWRectangle
+      AlignWithMargins = False
       Left = 1
       Top = 47
       Width = 134
       Height = 22
-      Font.Color = clWebBLACK
       Font.FontName = 'Arial'
-      Font.Size = 10
-      Font.Style = []
+      Font.PxSize = 13
+      Font.Color = clWebBLACK
       BorderOptions.Width = 0
       FriendlyName = 'rectBlackTop'
       Color = clWebGRAY
@@ -51,15 +47,15 @@ object ISFTopBar: TISFTopBar
       VAlign = vaMiddle
     end
     object rectRedTop: TIWRectangle
+      AlignWithMargins = False
       Left = 133
       Top = 47
       Width = 659
       Height = 22
       Anchors = [akLeft, akTop, akRight]
-      Font.Color = clWebBLACK
       Font.FontName = 'Arial'
-      Font.Size = 10
-      Font.Style = []
+      Font.PxSize = 13
+      Font.Color = clWebBLACK
       BorderOptions.Width = 0
       FriendlyName = 'rectRedTop'
       Color = clWebLIGHTGRAY
@@ -67,16 +63,18 @@ object ISFTopBar: TISFTopBar
       VAlign = vaBottom
     end
     object IWRectangleTitle: TIWRectangle
+      AlignWithMargins = False
       Left = 0
       Top = 0
       Width = 792
       Height = 39
       Align = alTop
       Text = '.   Maintenance Database'
-      Font.Color = clWebDIMGRAY
       Font.FontName = 'Arial'
       Font.Size = 16
       Font.Style = [fsBold]
+      Font.PxSize = 21
+      Font.Color = clWebDIMGRAY
       BorderOptions.Width = 0
       FriendlyName = 'IWRectangleTitle'
       Color = clWebLIGHTGRAY
@@ -87,19 +85,23 @@ object ISFTopBar: TISFTopBar
       ExplicitWidth = 517
     end
     object lblWelcome: TIWLabel
+      AlignWithMargins = False
       Left = 146
       Top = 50
-      Width = 4
-      Height = 16
-      Font.Color = clWebDARKSLATEGRAY
+      Width = 56
+      Height = 14
       Font.FontName = 'Arial'
-      Font.Size = 10
+      Font.Size = 8
       Font.Style = [fsBold]
+      Font.PxSize = 10
+      Font.Color = clWebDARKSLATEGRAY
+      NoWrap = True
       HasTabOrder = False
       FriendlyName = 'lblWelcome'
-      Caption = ' '
+      Caption = 'Welcome'
     end
     object iwlSignOut: TIWLink
+      AlignWithMargins = False
       Left = 608
       Top = 16
       Width = 53
@@ -108,19 +110,20 @@ object ISFTopBar: TISFTopBar
       StyleRenderOptions.RenderSize = False
       Alignment = taLeftJustify
       Color = clNone
-      Font.Color = clWebBLUE
       Font.FontName = 'Arial'
-      Font.Size = 10
-      Font.Style = []
+      Font.Style = [fsUnderline]
+      Font.PxSize = 13
+      Font.Color = clWebBLUE
       HasTabOrder = True
       DoSubmitValidation = False
       FriendlyName = 'iwlSignOut'
       OnClick = iwlSignOutClick
-      TabOrder = 0
+      TabOrder = -1
       RawText = False
       Caption = 'Log Out'
     end
     object lnkSignIn: TIWLink
+      AlignWithMargins = False
       Left = 532
       Top = 16
       Width = 53
@@ -129,10 +132,10 @@ object ISFTopBar: TISFTopBar
       StyleRenderOptions.RenderSize = False
       Alignment = taLeftJustify
       Color = clNone
-      Font.Color = clWebBLUE
       Font.FontName = 'Arial'
-      Font.Size = 10
-      Font.Style = []
+      Font.Style = [fsUnderline]
+      Font.PxSize = 13
+      Font.Color = clWebBLUE
       HasTabOrder = True
       DoSubmitValidation = False
       FriendlyName = 'lnkSignIn'

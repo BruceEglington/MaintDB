@@ -2,7 +2,7 @@ object ISFEquipment: TISFEquipment
   Left = 0
   Top = 0
   Width = 733
-  Height = 571
+  Height = 815
   RenderInvisibleControls = False
   OnRender = IWAppFormRender
   AllowPageAccess = True
@@ -15,67 +15,52 @@ object ISFEquipment: TISFEquipment
   LockUntilLoaded = True
   LockOnSubmit = True
   ShowHint = True
-  XPTheme = True
-  DesignLeft = 8
-  DesignTop = 8
+  DesignLeft = 2
+  DesignTop = 2
   object lblRecordCount: TIWLabel
+    AlignWithMargins = False
     Left = 100
     Top = 78
-    Width = 145
-    Height = 15
-    Cursor = crAuto
-    ParentShowHint = False
-    ShowHint = True
-    ZIndex = 0
-    RenderSize = True
-    Alignment = taLeftJustify
-    BGColor = clNone
-    Font.Color = clNone
+    Width = 144
+    Height = 14
     Font.FontName = 'Arial'
     Font.Size = 9
-    Font.Style = []
-    NoWrap = False
-    ConvertSpaces = False
+    Font.PxSize = 12
     HasTabOrder = False
     FriendlyName = 'lblRecordCount'
     Caption = 'records match the query'
-    RawText = False
   end
   object iwDBg: TIWDBGrid
+    AlignWithMargins = False
     Left = 96
     Top = 126
     Width = 597
-    Height = 628
-    Cursor = crAuto
-    ParentShowHint = False
-    ShowHint = True
-    ZIndex = 0
-    RenderSize = True
+    Height = 475
     BorderColors.Color = clNone
     BorderColors.Light = clNone
     BorderColors.Dark = clNone
     BGColor = clNone
-    BorderSize = 1
+    BorderSize = 0
     BorderStyle = tfDefault
     CellPadding = 2
     CellSpacing = 0
-    Font.Color = clNone
     Font.FontName = 'Arial'
     Font.Size = 8
-    Font.Style = []
+    Font.PxSize = 10
     FrameBuffer = 40
     Lines = tlAll
     UseFrame = True
     UseSize = True
+    ShowEmptyCells = True
+    ShowInvisibleRows = True
     ScrollToCurrentRow = False
     Columns = <
       item
         Alignment = taLeftJustify
         BGColor = clNone
         DoSubmitValidation = True
-        Font.Color = clNone
         Font.Size = 8
-        Font.Style = []
+        Font.PxSize = 10
         Header = False
         Height = '0'
         ShowHint = True
@@ -93,10 +78,10 @@ object ISFEquipment: TISFEquipment
         Title.Alignment = taCenter
         Title.BGColor = clNone
         Title.DoSubmitValidation = True
-        Title.Font.Color = clNone
         Title.Font.FontName = 'Arial'
         Title.Font.Size = 8
         Title.Font.Style = [fsBold]
+        Title.Font.PxSize = 10
         Title.Header = False
         Title.Height = '0'
         Title.ShowHint = True
@@ -111,62 +96,55 @@ object ISFEquipment: TISFEquipment
     FooterRowCount = 0
     FriendlyName = 'iwDBg'
     FromStart = False
-    HighlightColor = clNone
-    HighlightRows = False
-    Options = [dgShowTitles]
+    HighlightColor = clWebBEIGE
+    HighlightRows = True
+    Options = [dgIndicator, dgShowTitles]
     RefreshMode = rmAutomatic
     RowLimit = 20
     RollOver = True
     RowClick = False
     RollOverColor = clWebPALEGOLDENROD
     RowHeaderColor = clWebLIGHTSTEELBLUE
-    RowAlternateColor = clNone
+    RowAlternateColor = clWebALICEBLUE
     RowCurrentColor = clNone
-    TabOrder = -1
   end
   object iwlPrevPage: TIWLink
+    AlignWithMargins = False
     Left = 96
     Top = 105
     Width = 97
     Height = 17
-    Cursor = crAuto
-    ParentShowHint = False
-    ShowHint = True
-    ZIndex = 0
     RenderSize = False
     StyleRenderOptions.RenderSize = False
     Alignment = taLeftJustify
     Color = clNone
-    Font.Color = clWebBLUE
     Font.FontName = 'Arial'
     Font.Size = 9
-    Font.Style = []
-    ScriptEvents = <>
+    Font.PxSize = 12
+    Font.Color = clWebBLUE
+    HasTabOrder = True
     DoSubmitValidation = False
     FriendlyName = 'iwlPrevPage'
     OnClick = iwlPrevPageClick
-    TabOrder = 0
+    TabOrder = -1
     RawText = False
     Caption = 'Previous page'
   end
   object iwlNextPage: TIWLink
+    AlignWithMargins = False
     Left = 274
     Top = 105
     Width = 65
     Height = 17
-    Cursor = crAuto
-    ParentShowHint = False
-    ShowHint = True
-    ZIndex = 0
     RenderSize = False
     StyleRenderOptions.RenderSize = False
     Alignment = taLeftJustify
     Color = clNone
-    Font.Color = clWebBLUE
     Font.FontName = 'Arial'
     Font.Size = 9
-    Font.Style = []
-    ScriptEvents = <>
+    Font.PxSize = 12
+    Font.Color = clWebBLUE
+    HasTabOrder = True
     DoSubmitValidation = False
     FriendlyName = 'iwlNextPage'
     OnClick = iwlNextPageClick
@@ -175,156 +153,101 @@ object ISFEquipment: TISFEquipment
     Caption = 'Next page'
   end
   object iwlSortedBy: TIWLabel
+    AlignWithMargins = False
     Left = 554
     Top = 106
-    Width = 137
-    Height = 14
-    Cursor = crAuto
-    ParentShowHint = False
-    ShowHint = True
-    ZIndex = 0
-    RenderSize = True
+    Width = 133
+    Height = 12
     Alignment = taRightJustify
-    BGColor = clNone
-    Font.Color = clNone
     Font.FontName = 'Arial'
     Font.Size = 8
     Font.Style = [fsItalic]
-    NoWrap = False
-    ConvertSpaces = False
+    Font.PxSize = 10
     HasTabOrder = False
     FriendlyName = 'iwlSortedBy'
     Caption = 'Sorted as specified in query'
-    RawText = False
   end
   object iwlPageNum: TIWLabel
+    AlignWithMargins = False
     Left = 198
     Top = 107
-    Width = 14
-    Height = 15
-    Cursor = crAuto
-    ParentShowHint = False
-    ShowHint = True
-    ZIndex = 0
-    RenderSize = True
+    Width = 13
+    Height = 14
     Alignment = taRightJustify
-    BGColor = clNone
-    Font.Color = clNone
     Font.FontName = 'Arial'
     Font.Size = 9
-    Font.Style = []
-    NoWrap = False
-    ConvertSpaces = False
+    Font.PxSize = 12
     HasTabOrder = False
     FriendlyName = 'IWLabel1'
     Caption = '11'
-    RawText = False
   end
   object IWLabel3: TIWLabel
+    AlignWithMargins = False
     Left = 214
     Top = 107
     Width = 11
-    Height = 15
-    Cursor = crAuto
-    ParentShowHint = False
-    ShowHint = True
-    ZIndex = 0
-    RenderSize = True
-    Alignment = taLeftJustify
-    BGColor = clNone
-    Font.Color = clNone
+    Height = 14
     Font.FontName = 'Arial'
     Font.Size = 9
-    Font.Style = []
-    NoWrap = False
-    ConvertSpaces = False
+    Font.PxSize = 12
     HasTabOrder = False
     FriendlyName = 'IWLabel1'
     Caption = 'of'
-    RawText = False
   end
   object iwlPageNumTotal: TIWLabel
+    AlignWithMargins = False
     Left = 232
     Top = 107
-    Width = 15
-    Height = 15
-    Cursor = crAuto
-    ParentShowHint = False
-    ShowHint = True
-    ZIndex = 0
-    RenderSize = True
-    Alignment = taLeftJustify
-    BGColor = clNone
-    Font.Color = clNone
+    Width = 14
+    Height = 14
     Font.FontName = 'Arial'
     Font.Size = 9
-    Font.Style = []
-    NoWrap = False
-    ConvertSpaces = False
+    Font.PxSize = 12
     HasTabOrder = False
     FriendlyName = 'iwlPageNumTotal'
     Caption = '11'
-    RawText = False
   end
   object rectLeft: TIWRectangle
+    AlignWithMargins = False
     Left = 0
     Top = 69
     Width = 83
-    Height = 502
-    Cursor = crAuto
+    Height = 746
     Align = alLeft
-    ParentShowHint = False
-    ShowHint = True
     ZIndex = 1
-    RenderSize = True
+    Font.PxSize = 13
     Font.Color = clWebBLACK
-    Font.Size = 10
-    Font.Style = []
-    BorderOptions.Color = clNone
     BorderOptions.Width = 0
     FriendlyName = 'rectLeft'
     Color = clWebLAVENDER
     Alignment = taLeftJustify
     VAlign = vaMiddle
-    ExplicitHeight = 685
   end
   object iwbAddNew: TIWButton
+    AlignWithMargins = False
     Left = 516
     Top = 74
     Width = 127
     Height = 25
-    Cursor = crAuto
-    ParentShowHint = False
-    ShowHint = True
-    ZIndex = 0
-    RenderSize = True
     Caption = 'Add New Item'
     Color = clBtnFace
-    Font.Color = clNone
     Font.Size = 9
-    Font.Style = []
+    Font.PxSize = 12
     FriendlyName = 'iwbAddNew'
-    ScriptEvents = <>
     TabOrder = 3
     OnClick = iwbAddNewClick
   end
   object iwbReturn: TIWButton
+    AlignWithMargins = False
     Left = 350
     Top = 74
     Width = 149
     Height = 25
-    Cursor = crAuto
-    ParentShowHint = False
-    ShowHint = True
-    ZIndex = 0
-    RenderSize = True
     Caption = 'Return to main page'
     Color = clBtnFace
-    Font.Color = clNone
     Font.Size = 9
-    Font.Style = []
+    Font.PxSize = 12
     FriendlyName = 'iwbReturn'
-    ScriptEvents = <>
     TabOrder = 2
     OnClick = iwbReturnClick
   end
@@ -333,6 +256,10 @@ object ISFEquipment: TISFEquipment
     Top = 0
     Width = 733
     Height = 69
+    Margins.Left = 6
+    Margins.Top = 6
+    Margins.Right = 6
+    Margins.Bottom = 6
     HorzScrollBar.Visible = False
     VertScrollBar.Visible = False
     Align = alTop
@@ -356,31 +283,42 @@ object ISFEquipment: TISFEquipment
       DesignSize = (
         733
         69)
+      inherited rectBlackTop: TIWRectangle
+        Font.Color = clWebBLACK
+      end
       inherited rectRedTop: TIWRectangle
-        Width = 600
-        ExplicitWidth = 600
+        Width = 234
+        Font.Color = clWebBLACK
+        ExplicitWidth = 967
       end
       inherited IWRectangleTitle: TIWRectangle
         Width = 733
-        ExplicitWidth = 513
+        Font.Color = clWebDIMGRAY
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 733
       end
       inherited lblWelcome: TIWLabel
         Left = 152
-        Width = 3
         Height = 15
         Font.Size = 9
+        Font.PxSize = 12
+        Font.Color = clWebDARKSLATEGRAY
         ExplicitLeft = 152
-        ExplicitWidth = 3
         ExplicitHeight = 15
       end
       inherited iwlSignOut: TIWLink
         Font.Size = 9
+        Font.PxSize = 12
+        Font.Color = clWebBLUE
         TabOrder = 1
       end
       inherited lnkSignIn: TIWLink
         Left = 540
         Font.Size = 9
-        TabOrder = 0
+        Font.PxSize = 12
+        Font.Color = clWebBLUE
+        TabOrder = 2
         ExplicitLeft = 540
       end
     end

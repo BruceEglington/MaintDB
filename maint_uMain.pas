@@ -105,7 +105,9 @@ begin
     dmUser.cdsNumTimesUsed.Open;
     iwlNumUses.Caption := 'This program has been used '+dmUser.cdsNumTimesUsedNUMTIMESUSED.AsString+' times';
     dmUser.cdsNumTimesUsed.Close;
-    if ((UserSession.ShowDebugButtons) and (UserSession.LoggedIn)) then
+      iwbPermissions.Visible := false;
+      iwbCheckIniFile.Visible := false;
+    if ((UserSession.ShowDebugButtons) and (UserSession.IsDeveloper) and (UserSession.LoggedIn)) then
     begin
       iwbPermissions.Visible := true;
       iwbCheckIniFile.Visible := true;
@@ -149,18 +151,18 @@ begin
     URLBase := AppIni.ReadString('URLBase','URLBase','/');
     if (URLBase = '/') then URLBase := '';
     WebApplication.ShowMessage('URLBase is ***'+URLBase+'***');
-    UserControlPath := AppIni.ReadString('Paths','UserControl path','C:/Data/Firebird/UserControl2015v25.fdb');
+    UserControlPath := AppIni.ReadString('Paths','UserControl path','C:/Data/Firebird/UserControl2025v30_utf8.fdb');
     WebApplication.ShowMessage(UserControlPath);
-    MaintDBPath := AppIni.ReadString('Paths','MaintDB path','C:/Data/Firebird/MaintDB2011v25.fdb');
+    MaintDBPath := AppIni.ReadString('Paths','MaintDB path','C:/Data/Firebird/MaintDB2025v30_utf8.fdb');
     WebApplication.ShowMessage(MaintDBPath);
-    DriverName := AppIni.ReadString('Parameters','DriverName','DevartInterBase');
+    DriverName := AppIni.ReadString('Parameters','DriverName','DevartFirebird');
     WebApplication.ShowMessage(DriverName);
     DBUserName := AppIni.ReadString('Parameters','User_Name','SYSDBA');
     DBPassword := AppIni.ReadString('Parameters','Password','masterkey');
     DBSQLDialectStr := AppIni.ReadString('Parameters','SQLDialect','3');
-    DBCharSet := AppIni.ReadString('Parameters','Charset','ASCII');
-    DebugButtons := AppIni.ReadString('Debug','Buttons','Inactive');
-    DebugDelayConnections := AppIni.ReadString('Debug','DelayConnections','Inactive');
+    DBCharSet := AppIni.ReadString('Parameters','Charset','UTF8');
+    DebugButtons := AppIni.ReadString('Debug','Buttons','active');
+    DebugDelayConnections := AppIni.ReadString('Debug','DelayConnections','active');
     FromEmailAddress := AppIni.ReadString('Email','FromEmailAddress','aht820@usask.ca');
     FromName := AppIni.ReadString('Email','FromName','EggSoft developer and database administrator');
     HostName := AppIni.ReadString('Email','HostName','smtp.office365.com');

@@ -62,6 +62,10 @@ begin
   begin
     TopBar.lblWelcome.Caption := 'Welcome ' + UserSession.UserDisplayName;
   end;
+  iwbEdit.Visible := (dmR.cdsIssueDetails.State in [dsBrowse]);
+  iwbReturn.Visible := (dmR.cdsIssueDetails.State in [dsBrowse]);
+  iwbSaveChanges.Visible := (dmR.cdsIssueDetails.State in [dsEdit,dsInsert]);
+  iwbCancelChanges.Visible := (dmR.cdsIssueDetails.State in [dsEdit,dsInsert]);
 end;
 
 procedure TISFIssueEdit.IWAppFormCreate(Sender: TObject);

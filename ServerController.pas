@@ -7,6 +7,12 @@ uses
   //UserSessionUnit,
   IWApplication, IWAppForm,
   IWGlobal,
+  //IW.Browser.Browser,
+  IW.Browser.Other, IW.Browser.Firefox, IW.Browser.FirefoxMobile,
+  IW.Browser.InternetExplorer, IW.Browser.Webkit, IW.Browser.SafariMobile,
+  IW.Browser.Safari, IW.Browser.Chrome, IW.Browser.Android, IW.Browser.ChromeMobile,
+  IW.Browser.OperaNext,IW.Browser.Opera,IW.Browser.OperaMobile,
+  IW.Browser.SearchEngine,
   Windows,
   IniFiles,
   IW.Common.AppInfo,
@@ -23,6 +29,8 @@ type
     //  var rBrowser: TBrowser);
     procedure IWServerControllerBaseGetMainForm(var vMainForm: TIWBaseForm);
     procedure IWServerControllerBaseNewSession(aSession: TIWApplication);
+    procedure IWServerControllerBaseBrowserCheck(aSession: TIWApplication;
+      var rBrowser: TBrowser);
   private
     procedure GetIniFile;
   public
@@ -46,7 +54,7 @@ type
     this group of parameters need to be present in all
     EggSoft programs to facilitate user control and testing.
     }
-    UserID, UserPassword : string;
+    UserID, UserPassword : widestring;
     //SQLMemoField: TStringList;
     //UserAccessRights : TStringList;
     ThisProgram : string;
@@ -152,6 +160,7 @@ var
   IniFileNameAppInfo,
   IniFilePath,
   CommonFilePath,
+  ContentPath,
   UserControlPath,
   MaintDBPath,
   DBUserName, DBPassword,DBSpecific,DBSQLDialectStr,DBCharSet,
@@ -159,19 +168,19 @@ var
   PublicPath : string;
 begin
   URLBase := '/';
-  DBMonitor := 'Inactive';
+  DBMonitor := 'active';
   //UserSession.ShowDebugButtons := false;
   //UserSession.DelayConnections := false;
-  UserControlPath := 'bromo2.usask.ca:s:\Data\Firebird\UserControl2021v30.fdb';
-  MaintDBPath := 'bromo2.usask.ca:s:\Data\Firebird\MaintDB2021v30.fdb';
-  DriverName := 'DevartInterBase';
+  UserControlPath := 'bromo2.usask.ca:s:\Data\Firebird\UserControl2025v30_utf8.fdb';
+  MaintDBPath := 'bromo2.usask.ca:s:\Data\Firebird\MaintDB2025v30_utf8.fdb';
+  DriverName := 'DevartFirebird';
   LibraryName := 'dbexpida41.dll';
-  VendorLib := 'fbclient.dll';
+  VendorLib := 'c:\exe32\fbclient.dll';
   GetDriverFunc := 'getSQLDriverFirebird';
   DBUserName := 'SYSDBA';
-  DBPassword := 'masterkey';
+  DBPassword := 'V0lcano3^';
   DBSQLDialectStr := '3';
-  DBCharSet := 'ASCII';
+  DBCharSet := 'UTF8';
 
   PublicPath := TPath.GetPublicPath;
   CommonFilePath := IncludeTrailingPathDelimiter(PublicPath) + 'EggSoft\';
@@ -182,21 +191,22 @@ begin
   try
     URLBase := AppIni.ReadString('URLBase','URLBase','/maintdb');
     if (URLBase = '/') then URLBase := '';
-    UserControlPath := AppIni.ReadString('Paths','UserControl path','bromo2.usask.ca:s:\Data\Firebird\UserControl2021v30.fdb');
-    MaintDBPath := AppIni.ReadString('Paths','MaintDB path','bromo2.usask.ca:s:\Data\Firebird\MaintDB2021v30.fdb');
+    UserControlPath := AppIni.ReadString('Paths','UserControl path','bromo2.usask.ca:s:\Data\Firebird\UserControl2025v30_utf8.fdb');
+    ContentPath := AppIni.ReadString('Paths','Content path','c:\exe32\wwwroot');
+    MaintDBPath := AppIni.ReadString('Paths','MaintDB path','bromo2.usask.ca:s:\Data\Firebird\MaintDB2025v30_utf8.fdb');
     DriverName := AppIni.ReadString('Parameters','DriverName','DevartFirebird');
     LibraryName := AppIni.ReadString('Parameters','LibraryName','dbexpida41.dll');
-    VendorLib := AppIni.ReadString('Parameters','VendorLib','fbclient.dll');
+    VendorLib := AppIni.ReadString('Parameters','VendorLib','c:\exe32\fbclient.dll');
     GetDriverFunc := AppIni.ReadString('Parameters','GetDriverFunc','getSQLDriverFirebird');
     DBUserName := AppIni.ReadString('Parameters','User_Name','SYSDBA');
     DBPassword := AppIni.ReadString('Parameters','Password','V0lcano3^');
     DBSQLDialectStr := AppIni.ReadString('Parameters','SQLDialect','3');
-    DBCharSet := AppIni.ReadString('Parameters','Charset','ASCII');
+    DBCharSet := AppIni.ReadString('Parameters','Charset','UTF8');
     DBMonitor := AppIni.ReadString('Monitor','DBMonitor','Active');
     DebugButtons := AppIni.ReadString('Debug','Buttons','Active');
-    DebugDelayConnections := AppIni.ReadString('Debug','DelayConnections','true');
+    //DebugDelayConnections := AppIni.ReadString('Debug','DelayConnections','true');
     if (DebugButtons = 'Active') then UserSession.ShowDebugButtons := true;
-    if (DebugDelayConnections = 'true') then UserSession.DelayConnections := true;
+    //if (DebugDelayConnections = 'true') then UserSession.DelayConnections := true;
     FromEmailAddress := AppIni.ReadString('Email','FromEmailAddress','aht820@usask.ca');
     FromName := AppIni.ReadString('Email','FromName','EggSoft developer and database administrator');
     HostName := AppIni.ReadString('Email','HostName','smtp.office365.com');
@@ -225,15 +235,9 @@ begin
     dmUser.sqlcWebUser.Params.Append('SQLDialect='+DBSQLDialectStr);
     dmUser.sqlcWebUser.Params.Append('Charset='+DBCharSet);
     dmUser.sqlcWebUser.Params.Append('LocaleCode=0000');
-    dmUser.sqlcWebUser.Params.Append('DevartInterBase TransIsolation=ReadCommitted');
-    dmUser.sqlcWebUser.Params.Append('WaitOnLocks=True');
-    dmUser.sqlcWebUser.Params.Append('CharLength=1');
-    dmUser.sqlcWebUser.Params.Append('EnableBCD=True');
-    dmUser.sqlcWebUser.Params.Append('OptimizedNumerics=false');
-    dmUser.sqlcWebUser.Params.Append('LongStrings=True');
-    dmUser.sqlcWebUser.Params.Append('UseQuoteChar=False');
-    dmUser.sqlcWebUser.Params.Append('FetchAll=False');
-    dmUser.sqlcWebUser.Params.Append('UseUnicode=False');
+    dmUser.sqlcWebUser.Params.Append('DevartFirebird TransIsolation=ReadCommitted');
+    //dmUser.sqlcWebUser.Params.Append('WaitOnLocks=True');
+    dmUser.sqlcWebUser.Params.Append('UseUnicode=true');
     //define connection parameters for MaintDB connection
     dmR.sqlcMaintDB.Connected := false;
     dmR.sqlcMaintDB.Params.Clear;
@@ -247,23 +251,15 @@ begin
     dmR.sqlcMaintDB.Params.Append('SQLDialect='+DBSQLDialectStr);
     dmR.sqlcMaintDB.Params.Append('Charset='+DBCharSet);
     dmR.sqlcMaintDB.Params.Append('LocaleCode=0000');
-    dmR.sqlcMaintDB.Params.Append('DevartInterBase TransIsolation=ReadCommitted');
-    dmR.sqlcMaintDB.Params.Append('WaitOnLocks=True');
-    dmR.sqlcMaintDB.Params.Append('CharLength=1');
-    dmR.sqlcMaintDB.Params.Append('EnableBCD=True');
-    dmR.sqlcMaintDB.Params.Append('OptimizedNumerics=false');
-    dmR.sqlcMaintDB.Params.Append('LongStrings=True');
-    dmR.sqlcMaintDB.Params.Append('UseQuoteChar=False');
-    dmR.sqlcMaintDB.Params.Append('FetchAll=False');
-    dmR.sqlcMaintDB.Params.Append('UseUnicode=False');
+    dmR.sqlcMaintDB.Params.Append('DevartFirebird TransIsolation=ReadCommitted');
+    //dmR.sqlcMaintDB.Params.Append('WaitOnLocks=True');
+    dmR.sqlcMaintDB.Params.Append('UseUnicode=true');
     if (DBMonitor = 'Active') then
     begin
       dmUser.SQLMonitor1.Active := true;
-      //dmR.SQLMonitor1.Active := true;
     end else
     begin
       dmUser.SQLMonitor1.Active := false;
-      //dmR.SQLMonitor1.Active := false;
     end;
     tmpcheckstr := UserControlPath;
   finally
@@ -271,48 +267,80 @@ begin
   end;
 end;
 
-{
+
 procedure TIWServerController.IWServerControllerBaseBrowserCheck(
   aSession: TIWApplication; var rBrowser: TBrowser);
+  {
+  //use the following in the uses interface to be able to use code in this procedure
+  //IW.Browser.Browser,
+  IW.Browser.Other, IW.Browser.Firefox, IW.Browser.FirefoxMobile,
+  IW.Browser.InternetExplorer, IW.Browser.Webkit, IW.Browser.SafariMobile,
+  IW.Browser.Safari, IW.Browser.Chrome, IW.Browser.Android, IW.Browser.ChromeMobile,
+  IW.Browser.OperaNext,IW.Browser.Opera,IW.Browser.OperaMobile,
+  IW.Browser.SearchEngine,
+  }
 var
-  MinVersion: Single;
+  uas : string;
 begin
+  //uas := Lowercase(ASession.Request.UserAgent); //convert user-agent string to lowercase for comparison
+  {
+  if (rBrowser is TSearchEngine) then //Use IW's built-in detection
+  begin
+    ASession.Terminate('403 Forbidden. Indexing of this resource by search engines is not allowed!');
+    rBrowser.destroy;
+    rBrowser := TInternetExplorer.Create(9);
+    //Log this session including the uas so you know that the server defended itself
+  end
+  else if (Pos('baidu',uas) > 0) //Screen deeperinto user-agent string. These conditions can be moved to a function or class. They are exposed here for simplicity.
+    or (Pos('yandex',uas) > 0)
+    or (Pos('naverbot',uas) > 0)
+    or (Pos('yeti',uas) > 0)
+    or (Pos('seznambot',uas) > 0)
+    or (Pos('slurp',uas) > 0)
+    or (Pos('teoma',uas) > 0)
+    or (Pos('moget',uas) > 0)
+    or (Pos('ichiro',uas) > 0)
+    or (Pos('sogu',uas) > 0)
+    or (Pos('bot',uas) > 0)
+    or (Pos('spider',uas) > 0) then
+  begin
+    ASession.Terminate('403 Forbidden. Crawling this site is not allowed!');
+    rBrowser.destroy;
+    rBrowser := TInternetExplorer.Create(9);
+    //Log this session including the uas so you have a record of it
+  end;
   // unknown browser
   if (rBrowser is TOther) then begin
     rBrowser.Free;
-    // accept the unknown browser as Internet Explorer 8
-    rBrowser := TInternetExplorer.Create(8);
+    // accept the unknown browser as Firefox (probably the best idea)
+    rBrowser := TFireFox.Create(TFireFox.MIN_VERSION);
   end
-  // if is Safari, but older version
+  // if is Safari, but older or unsupported version
   else if (rBrowser is TSafari) and (not rBrowser.IsSupported) then begin
-    MinVersion := rBrowser.MinSupportedVersion;
     rBrowser.Free;
-    // we will create it as the minimum supported version
-    rBrowser := TSafari.Create(MinVersion);
+    // we will create it as the minimum supported version. Please note that we are using TSafari.MIN_VERSION class property
+    rBrowser := TSafari.Create(TSafari.MIN_VERSION);
   end
-  // if is Chrome, but older version
+  // if is Chrome, but older or unsupported version
   else if (rBrowser is TChrome) and (not rBrowser.IsSupported) then begin
-    MinVersion := rBrowser.MinSupportedVersion;
     rBrowser.Free;
-    // we will create it as the minimum supported version
-    rBrowser := TChrome.Create(MinVersion);
+    // we will create it as the minimum supported version. Please note that we are using TChrome.MIN_VERSION class property
+    rBrowser := TChrome.Create(TChrome.MIN_VERSION);
   end
-  // if is Firefox, but older version
+  // if is Firefox, but older or unsupported version
   else if (rBrowser is TFirefox) and (not rBrowser.IsSupported) then begin
-    MinVersion := rBrowser.MinSupportedVersion;
     rBrowser.Free;
-    // we will create it as the minimum supported version
-    rBrowser := TFirefox.Create(MinVersion);
+    // we will create it as the minimum supported version. Please note that we are using TFirefox.MIN_VERSION class property
+    rBrowser := TFirefox.Create(TFirefox.MIN_VERSION);
   end
-  // if is IE, but older version
+  // if is IE, but older or unsupported version
   else if (rBrowser is TInternetExplorer) and (not rBrowser.IsSupported) then begin
-    MinVersion := rBrowser.MinSupportedVersion;
     rBrowser.Free;
-    // we will create it as the minimum supported version
-    rBrowser := TInternetExplorer.Create(MinVersion);
-  end;
+    // we will create it as the minimum supported version. Please note that we are using TInternetExplorer.MIN_VERSION class property
+    rBrowser := TInternetExplorer.Create(TInternetExplorer.MIN_VERSION);
+  end ;
+  }
 end;
-}
 
 procedure TIWServerController.IWServerControllerBaseGetMainForm(
   var vMainForm: TIWBaseForm);

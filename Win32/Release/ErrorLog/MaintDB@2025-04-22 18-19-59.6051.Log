@@ -1,0 +1,34 @@
+------------------------------------------------------------------------------------------------------------------------
+Exception message  : can't format message 13:98 -- message file C:\WINDOWS\SYSTEM32\firebird.msg not found.Unable to complete network request to host "bromo2.usask.ca".Failed to establish a connection
+Depending on the error condition, it might be possible to restart the application.
+Exception class    : EOleException
+Exception address  : 0068CDAA
+Exception Time     : 2025-04-22 18:19:59.604
+------------------------------------------------------------------------------------------------------------------------
+Application Name   : MaintDB.exe
+Application Version: 2.0.0.0
+Started at         : 2025-04-22 18:19:27.240
+Running for        :  32 seconds
+Computer Name      : EGLINGTON2
+Compiler Version   : 360
+------------------------------------------------------------------------------------------------------------------------
+IntraWeb Version   : 15.6.1
+Multi-session      : False
+Content Path       : C:\DevD12\Maintenance\wwwroot\
+Session count      : 1
+Current Thread ID  : 7964
+Application Path   : C:\DevD12\Maintenance\Win32\Release\
+Active Form        : ISFLogin (TISFLogin)
+Active Form list   : [1] ISFLogin (TISFLogin)
+Form list          : [1] dmUser (TdmUser)
+                     [2] dmR (TdmR)
+                     [3] ISFLogin (TISFLogin)
+Browser Name       : Firefox
+Browser UserAgent  : Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0
+Session ID         : 5axBbEERsn1L8TrkL~GEC28Csra
+Last Access        : 2025-04-22 18:19:37.815
+Callback           : False
+Runtime parameters : 
+------------------------------------------------------------------------------------------------------------------------
+[Stack trace is empty]
+------------------------------------------------------------------------------------------------------------------------

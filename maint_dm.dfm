@@ -2,30 +2,23 @@ object dmR: TdmR
   Height = 561
   Width = 676
   object sqlcMaintDB: TSQLConnection
-    ConnectionName = 'bromo2_MaintDB'
     DriverName = 'DevartFirebird'
     LoginPrompt = False
     Params.Strings = (
       'VendorLibOsx=libfbclient.dylib'
       'GetDriverFunc=getSQLDriverFirebird'
-      'LibraryName=dbexpida41.dll'
-      'VendorLib=fbclient.dll'
-      'DataBase=bromo2.usask.ca:s:\data\firebird\maintdb2011v25.fdb'
+      'LibraryName=c:\exe64\dbexpida41.dll'
+      'VendorLib=c:\exe64\fbclient.dll'
+      'DataBase=c:\data\firebird\maintdb2025v50_utf8.fdb'
       'User_Name=SYSDBA'
-      'Password=masterkey'
+      'Password=V0lcano3^'
       'SQLDialect=3'
-      'BlobSize=-1'
-      'ErrorResourceFile='
-      'LocaleCode=0000'
       'DevartFirebird TransIsolation=ReadCommitted'
       'ProductName=DevartFirebird'
-      
-        'DriverPackageLoader=TDBXDynalinkDriverLoader,DBXCommonDriver260.' +
-        'bpl'
-      
-        'MetaDataPackageLoader=TDBXDevartInterBaseMetaDataCommandFactory,' +
-        'DbxDevartInterBaseDriver260.bpl'
-      'DriverUnit=DbxDevartInterBase')
+      'DriverUnit=DbxDevartInterBase'
+      'Charset=UTF8'
+      'UseUnicode=true'
+      '')
     Left = 32
     Top = 14
   end
@@ -54,19 +47,19 @@ object dmR: TdmR
       FieldName = 'ISSUEID'
       Required = True
     end
-    object Query1PROBLEMSHORT: TStringField
+    object Query1PROBLEMSHORT: TWideStringField
       FieldName = 'PROBLEMSHORT'
       Size = 100
     end
     object Query1DATEENTERED: TSQLTimeStampField
       FieldName = 'DATEENTERED'
     end
-    object Query1COMPLETE: TStringField
+    object Query1COMPLETE: TWideStringField
       FieldName = 'COMPLETE'
       FixedChar = True
       Size = 1
     end
-    object Query1EQUIPMENT: TStringField
+    object Query1EQUIPMENT: TWideStringField
       FieldName = 'EQUIPMENT'
       Required = True
       Size = 255
@@ -92,7 +85,7 @@ object dmR: TdmR
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object cdsQuery1PROBLEMSHORT: TStringField
+    object cdsQuery1PROBLEMSHORT: TWideStringField
       DisplayLabel = 'Problem (abbreviated description)'
       FieldName = 'PROBLEMSHORT'
       Size = 100
@@ -107,13 +100,13 @@ object dmR: TdmR
       FieldName = 'DATEENTERED'
       DisplayFormat = 'ddddd'
     end
-    object cdsQuery1COMPLETE: TStringField
+    object cdsQuery1COMPLETE: TWideStringField
       DisplayLabel = 'Complete (Y/N)'
       FieldName = 'COMPLETE'
       FixedChar = True
       Size = 1
     end
-    object cdsQuery1EQUIPMENT: TStringField
+    object cdsQuery1EQUIPMENT: TWideStringField
       DisplayLabel = 'Equipment'
       FieldName = 'EQUIPMENT'
       Required = True
@@ -138,7 +131,7 @@ object dmR: TdmR
       FieldName = 'ID'
       Required = True
     end
-    object qCategoriesCATEGORY: TStringField
+    object qCategoriesCATEGORY: TWideStringField
       FieldName = 'CATEGORY'
       Required = True
       Size = 50
@@ -157,7 +150,7 @@ object dmR: TdmR
       FieldName = 'SETUPID'
       Required = True
     end
-    object qCompaniesCOMPANYNAME: TStringField
+    object qCompaniesCOMPANYNAME: TWideStringField
       FieldName = 'COMPANYNAME'
       Required = True
       Size = 50
@@ -176,7 +169,7 @@ object dmR: TdmR
       FieldName = 'ID'
       Required = True
     end
-    object qEquipmentEQUIPMENT: TStringField
+    object qEquipmentEQUIPMENT: TWideStringField
       FieldName = 'EQUIPMENT'
       Required = True
       Size = 255
@@ -189,23 +182,23 @@ object dmR: TdmR
       FieldName = 'MANUFACTURERID'
       Required = True
     end
-    object qEquipmentCELL: TStringField
+    object qEquipmentCELL: TWideStringField
       FieldName = 'CELL'
       Size = 50
     end
-    object qEquipmentPHONE: TStringField
+    object qEquipmentPHONE: TWideStringField
       FieldName = 'PHONE'
       Size = 50
     end
-    object qEquipmentFAX: TStringField
+    object qEquipmentFAX: TWideStringField
       FieldName = 'FAX'
       Size = 50
     end
-    object qEquipmentCONTACT: TStringField
+    object qEquipmentCONTACT: TWideStringField
       FieldName = 'CONTACT'
       Size = 50
     end
-    object qEquipmentEMAIL: TStringField
+    object qEquipmentEMAIL: TWideStringField
       FieldName = 'EMAIL'
       Size = 100
     end
@@ -227,44 +220,44 @@ object dmR: TdmR
       FieldName = 'MANUFACTURERID'
       Required = True
     end
-    object qManufacturersMANUFACTURER: TStringField
+    object qManufacturersMANUFACTURER: TWideStringField
       FieldName = 'MANUFACTURER'
       Required = True
       Size = 255
     end
-    object qManufacturersCITY: TStringField
+    object qManufacturersCITY: TWideStringField
       FieldName = 'CITY'
       Size = 50
     end
-    object qManufacturersSTATEPROV: TStringField
+    object qManufacturersSTATEPROV: TWideStringField
       FieldName = 'STATEPROV'
       Size = 50
     end
-    object qManufacturersCOUNTRY: TStringField
+    object qManufacturersCOUNTRY: TWideStringField
       FieldName = 'COUNTRY'
       Size = 50
     end
-    object qManufacturersCELL: TStringField
+    object qManufacturersCELL: TWideStringField
       FieldName = 'CELL'
       Size = 50
     end
-    object qManufacturersPHONE: TStringField
+    object qManufacturersPHONE: TWideStringField
       FieldName = 'PHONE'
       Size = 50
     end
-    object qManufacturersFAX: TStringField
+    object qManufacturersFAX: TWideStringField
       FieldName = 'FAX'
       Size = 50
     end
-    object qManufacturersEMAIL: TStringField
+    object qManufacturersEMAIL: TWideStringField
       FieldName = 'EMAIL'
       Size = 50
     end
-    object qManufacturersWEBSITE: TStringField
+    object qManufacturersWEBSITE: TWideStringField
       FieldName = 'WEBSITE'
       Size = 50
     end
-    object qManufacturersCONTACT: TStringField
+    object qManufacturersCONTACT: TWideStringField
       FieldName = 'CONTACT'
       Size = 50
     end
@@ -292,7 +285,7 @@ object dmR: TdmR
       FieldName = 'ID'
       Required = True
     end
-    object qRoomsROOM: TStringField
+    object qRoomsROOM: TWideStringField
       FieldName = 'ROOM'
       Required = True
       Size = 255
@@ -315,7 +308,7 @@ object dmR: TdmR
       FieldName = 'TECHNICIANID'
       Required = True
     end
-    object qTechniciansTECHNICIAN: TStringField
+    object qTechniciansTECHNICIAN: TWideStringField
       FieldName = 'TECHNICIAN'
       Required = True
       Size = 50
@@ -363,7 +356,7 @@ object dmR: TdmR
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object cdsCategoriesCATEGORY: TStringField
+    object cdsCategoriesCATEGORY: TWideStringField
       DisplayLabel = 'Category'
       FieldName = 'CATEGORY'
       Required = True
@@ -382,7 +375,7 @@ object dmR: TdmR
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object cdsCompaniesCOMPANYNAME: TStringField
+    object cdsCompaniesCOMPANYNAME: TWideStringField
       DisplayLabel = 'Company'
       FieldName = 'COMPANYNAME'
       Required = True
@@ -401,7 +394,7 @@ object dmR: TdmR
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object cdsEquipmentEQUIPMENT: TStringField
+    object cdsEquipmentEQUIPMENT: TWideStringField
       DisplayLabel = 'Equipment'
       FieldName = 'EQUIPMENT'
       Required = True
@@ -417,27 +410,27 @@ object dmR: TdmR
       FieldName = 'MANUFACTURERID'
       Required = True
     end
-    object cdsEquipmentCELL: TStringField
+    object cdsEquipmentCELL: TWideStringField
       DisplayLabel = 'Cell'
       FieldName = 'CELL'
       Size = 50
     end
-    object cdsEquipmentPHONE: TStringField
+    object cdsEquipmentPHONE: TWideStringField
       DisplayLabel = 'Telephone'
       FieldName = 'PHONE'
       Size = 50
     end
-    object cdsEquipmentFAX: TStringField
+    object cdsEquipmentFAX: TWideStringField
       DisplayLabel = 'Telefax'
       FieldName = 'FAX'
       Size = 50
     end
-    object cdsEquipmentCONTACT: TStringField
+    object cdsEquipmentCONTACT: TWideStringField
       DisplayLabel = 'Contact'
       FieldName = 'CONTACT'
       Size = 50
     end
-    object cdsEquipmentEMAIL: TStringField
+    object cdsEquipmentEMAIL: TWideStringField
       DisplayLabel = 'E-mail'
       FieldName = 'EMAIL'
       Size = 100
@@ -460,53 +453,53 @@ object dmR: TdmR
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object cdsManufacturersMANUFACTURER: TStringField
+    object cdsManufacturersMANUFACTURER: TWideStringField
       DisplayLabel = 'Manufacturer'
       FieldName = 'MANUFACTURER'
       Required = True
       Size = 255
     end
-    object cdsManufacturersCITY: TStringField
+    object cdsManufacturersCITY: TWideStringField
       DisplayLabel = 'City'
       FieldName = 'CITY'
       Size = 50
     end
-    object cdsManufacturersSTATEPROV: TStringField
+    object cdsManufacturersSTATEPROV: TWideStringField
       DisplayLabel = 'State / Prov.'
       FieldName = 'STATEPROV'
       Size = 50
     end
-    object cdsManufacturersCOUNTRY: TStringField
+    object cdsManufacturersCOUNTRY: TWideStringField
       DisplayLabel = 'Country'
       FieldName = 'COUNTRY'
       Size = 50
     end
-    object cdsManufacturersCELL: TStringField
+    object cdsManufacturersCELL: TWideStringField
       DisplayLabel = 'Cell'
       FieldName = 'CELL'
       Size = 50
     end
-    object cdsManufacturersPHONE: TStringField
+    object cdsManufacturersPHONE: TWideStringField
       DisplayLabel = 'Telephone'
       FieldName = 'PHONE'
       Size = 50
     end
-    object cdsManufacturersFAX: TStringField
+    object cdsManufacturersFAX: TWideStringField
       DisplayLabel = 'Telefax'
       FieldName = 'FAX'
       Size = 50
     end
-    object cdsManufacturersEMAIL: TStringField
+    object cdsManufacturersEMAIL: TWideStringField
       DisplayLabel = 'E-mail'
       FieldName = 'EMAIL'
       Size = 50
     end
-    object cdsManufacturersWEBSITE: TStringField
+    object cdsManufacturersWEBSITE: TWideStringField
       DisplayLabel = 'Website'
       FieldName = 'WEBSITE'
       Size = 50
     end
-    object cdsManufacturersCONTACT: TStringField
+    object cdsManufacturersCONTACT: TWideStringField
       DisplayLabel = 'Contact'
       FieldName = 'CONTACT'
       Size = 50
@@ -529,7 +522,7 @@ object dmR: TdmR
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object cdsRoomsROOM: TStringField
+    object cdsRoomsROOM: TWideStringField
       DisplayLabel = 'Room'
       FieldName = 'ROOM'
       Required = True
@@ -553,7 +546,7 @@ object dmR: TdmR
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object cdsTechniciansTECHNICIAN: TStringField
+    object cdsTechniciansTECHNICIAN: TWideStringField
       DisplayLabel = 'Technician'
       FieldName = 'TECHNICIAN'
       Required = True
@@ -608,7 +601,7 @@ object dmR: TdmR
       FieldName = 'ISSUEID'
       Required = True
     end
-    object qIssueDetailsPROBLEMSHORT: TStringField
+    object qIssueDetailsPROBLEMSHORT: TWideStringField
       FieldName = 'PROBLEMSHORT'
       Size = 100
     end
@@ -624,9 +617,8 @@ object dmR: TdmR
       FieldName = 'TECHNICIANID'
       Required = True
     end
-    object qIssueDetailsSOLUTION: TMemoField
+    object qIssueDetailsSOLUTION: TBlobField
       FieldName = 'SOLUTION'
-      BlobType = ftMemo
       Size = 1
     end
     object qIssueDetailsDATEREPAIRED: TSQLTimeStampField
@@ -641,7 +633,7 @@ object dmR: TdmR
       FieldName = 'CATEGORYID'
       Required = True
     end
-    object qIssueDetailsCOMPLETE: TStringField
+    object qIssueDetailsCOMPLETE: TWideStringField
       FieldName = 'COMPLETE'
       FixedChar = True
       Size = 1
@@ -665,7 +657,7 @@ object dmR: TdmR
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Required = True
     end
-    object cdsIssueDetailsPROBLEMSHORT: TStringField
+    object cdsIssueDetailsPROBLEMSHORT: TWideStringField
       DisplayLabel = 'Problem (abbreviated)'
       FieldName = 'PROBLEMSHORT'
       Size = 100
@@ -685,10 +677,9 @@ object dmR: TdmR
       FieldName = 'TECHNICIANID'
       Required = True
     end
-    object cdsIssueDetailsSOLUTION: TMemoField
+    object cdsIssueDetailsSOLUTION: TBlobField
       DisplayLabel = 'Solution'
       FieldName = 'SOLUTION'
-      BlobType = ftMemo
       Size = 1
     end
     object cdsIssueDetailsDATEREPAIRED: TSQLTimeStampField
@@ -706,7 +697,7 @@ object dmR: TdmR
       FieldName = 'CATEGORYID'
       Required = True
     end
-    object cdsIssueDetailsCOMPLETE: TStringField
+    object cdsIssueDetailsCOMPLETE: TWideStringField
       DisplayLabel = 'Complete'
       FieldName = 'COMPLETE'
       FixedChar = True
@@ -726,13 +717,13 @@ object dmR: TdmR
     SQLConnection = sqlcMaintDB
     Left = 22
     Top = 440
-    object qYesNoYESNOID: TStringField
+    object qYesNoYESNOID: TWideStringField
       FieldName = 'YESNOID'
       Required = True
       FixedChar = True
       Size = 1
     end
-    object qYesNoYESNO: TStringField
+    object qYesNoYESNO: TWideStringField
       FieldName = 'YESNO'
       Required = True
       Size = 3
@@ -749,7 +740,7 @@ object dmR: TdmR
     ProviderName = 'dspYesNo'
     Left = 78
     Top = 440
-    object cdsYesNoYESNOID: TStringField
+    object cdsYesNoYESNOID: TWideStringField
       DisplayLabel = 'YesNoID'
       FieldName = 'YESNOID'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -757,7 +748,7 @@ object dmR: TdmR
       FixedChar = True
       Size = 1
     end
-    object cdsYesNoYESNO: TStringField
+    object cdsYesNoYESNO: TWideStringField
       DisplayLabel = 'Yes / No'
       FieldName = 'YESNO'
       Required = True
@@ -840,6 +831,7 @@ object dmR: TdmR
     Top = 216
   end
   object SQLMonitor1: TSQLMonitor
+    SQLConnection = sqlcMaintDB
     Left = 504
     Top = 104
   end
